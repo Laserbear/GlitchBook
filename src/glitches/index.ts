@@ -11,12 +11,16 @@ import { bitDepth } from './pixel-format/bit-depth';
 import { gamma } from './pixel-format/gamma';
 import { premultipliedAlpha } from './pixel-format/premultiplied-alpha';
 import { signedUnsigned } from './pixel-format/signed-unsigned';
+import { compression } from './pixel-format/compression';
+import { yuv } from './pixel-format/yuv';
+import { floatPrecision } from './pixel-format/float-precision';
 
 // Memory layout glitches
 import { wrongStride } from './memory-layout/wrong-stride';
 import { wrongPitch } from './memory-layout/wrong-pitch';
 import { rowPadding } from './memory-layout/row-padding';
 import { alignment } from './memory-layout/alignment';
+import { swizzle } from './memory-layout/swizzle';
 
 // Coordinate glitches
 import { offByOne } from './coordinates/off-by-one';
@@ -25,6 +29,7 @@ import { uvWrapping } from './coordinates/uv-wrapping';
 import { aspectRatio } from './coordinates/aspect-ratio';
 import { sampling } from './coordinates/sampling';
 import { halfPixel } from './coordinates/half-pixel';
+import { mipmap } from './coordinates/mipmap';
 
 export const glitches: GlitchDefinition[] = [
   // Pixel format
@@ -38,11 +43,15 @@ export const glitches: GlitchDefinition[] = [
   gamma,
   premultipliedAlpha,
   signedUnsigned,
+  compression,
+  yuv,
+  floatPrecision,
   // Memory layout
   wrongStride,
   wrongPitch,
   rowPadding,
   alignment,
+  swizzle,
   // Coordinates
   offByOne,
   flippedAxis,
@@ -50,6 +59,7 @@ export const glitches: GlitchDefinition[] = [
   aspectRatio,
   sampling,
   halfPixel,
+  mipmap,
 ];
 
 export const glitchById = new Map<string, GlitchDefinition>(
