@@ -1,10 +1,11 @@
 import { glitches, glitchesByCategory } from '../glitches';
 import type { GlitchDefinition, GlitchCategory } from '../glitches';
 import { GlitchCard } from './glitch-card';
-import { loadImageDataFromFile, setupDropZone, createFileInput } from '../utils/image-loader';
+import { loadImageDataFromFile, loadImageDataFromURL, setupDropZone, createFileInput } from '../utils/image-loader';
 import { resizeImageData } from '../utils/canvas';
 
 const PREVIEW_SIZE = 200;
+const DEFAULT_IMAGE = './costarica.jpg';
 
 export class Gallery {
   private container: HTMLElement;
@@ -22,6 +23,30 @@ export class Gallery {
     this.container = container;
     this.onGlitchSelect = onGlitchSelect;
     this.render();
+    this.loadDefaultImage();
+  }
+
+  private async loadDefaultImage(): Promise<void> {
+    try {
+      let imageData = await loadImageDataFromURL(DEFAULT_IMAGE);
+      imageData = resizeImageData(imageData, PREVIEW_SIZE, PREVIEW_SIZE);
+      this.imageData = imageData;
+
+      const preview = document.getElementById('gallery-preview')!;
+      const content = document.querySelector('.gallery-upload-content') as HTMLElement;
+      const canvas = document.getElementById('gallery-preview-canvas') as HTMLCanvasElement;
+
+      canvas.width = imageData.width;
+      canvas.height = imageData.height;
+      canvas.getContext('2d')!.putImageData(imageData, 0, 0);
+
+      preview.style.display = 'flex';
+      content.style.display = 'none';
+
+      this.renderCards();
+    } catch (error) {
+      console.log('Default image not loaded, user can upload their own');
+    }
   }
 
   private render(): void {
