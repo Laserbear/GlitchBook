@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlitchBook - Graphics Glitch Encyclopedia</title>
+    <meta name="description" content="Interactive encyclopedia documenting common graphics programming bugs and their visual artifacts. Learn about pixel format bugs, memory layout issues, and coordinate system errors." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼️</text></svg>" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="header-content">
+          <h1 class="logo">
+            <span class="logo-icon">🖼️</span>
+            GlitchBook
+          </h1>
+          <nav class="nav">
+            <a href="#gallery" class="nav-link active" data-view="gallery">Encyclopedia</a>
+            <a href="#sandbox" class="nav-link" data-view="sandbox">Sandbox</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main">
+        <div id="gallery-container"></div>
+        <div id="sandbox-container" style="display: none;"></div>
+      </main>
+
+      <footer class="footer">
+        <p>All image processing happens client-side. Your images never leave your browser.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
