@@ -8,6 +8,9 @@ import { argbOrder } from './pixel-format/argb-order';
 import { endianness } from './pixel-format/endianness';
 import { channelShift } from './pixel-format/channel-shift';
 import { bitDepth } from './pixel-format/bit-depth';
+import { gamma } from './pixel-format/gamma';
+import { premultipliedAlpha } from './pixel-format/premultiplied-alpha';
+import { signedUnsigned } from './pixel-format/signed-unsigned';
 
 // Memory layout glitches
 import { wrongStride } from './memory-layout/wrong-stride';
@@ -20,6 +23,8 @@ import { offByOne } from './coordinates/off-by-one';
 import { flippedAxis } from './coordinates/flipped-axis';
 import { uvWrapping } from './coordinates/uv-wrapping';
 import { aspectRatio } from './coordinates/aspect-ratio';
+import { sampling } from './coordinates/sampling';
+import { halfPixel } from './coordinates/half-pixel';
 
 export const glitches: GlitchDefinition[] = [
   // Pixel format
@@ -30,6 +35,9 @@ export const glitches: GlitchDefinition[] = [
   endianness,
   channelShift,
   bitDepth,
+  gamma,
+  premultipliedAlpha,
+  signedUnsigned,
   // Memory layout
   wrongStride,
   wrongPitch,
@@ -40,6 +48,8 @@ export const glitches: GlitchDefinition[] = [
   flippedAxis,
   uvWrapping,
   aspectRatio,
+  sampling,
+  halfPixel,
 ];
 
 export const glitchById = new Map<string, GlitchDefinition>(
